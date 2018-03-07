@@ -81,7 +81,11 @@ public class Boot03ApplicationTests {
 	@Test
 	public void testBnoOrderByPaging() {
 
-		Pageable paging = new PageRequest(0, 10);
+		//Pageable paging = new PageRequest(0, 10);
+		
+		
+		//spring boot 2.0.0
+		Pageable paging = PageRequest.of(0, 10);
 
 		Collection<Board> results = repo.findByBnoGreaterThanOrderByBnoDesc(0L, paging);
 		results.forEach(board -> System.out.println(board));
@@ -101,7 +105,10 @@ public class Boot03ApplicationTests {
 	@Test
 	public void testBnoPagingSort() {
 
-		Pageable paging = new PageRequest(0, 10, Sort.Direction.ASC, "bno");
+		//Pageable paging = new PageRequest(0, 10, Sort.Direction.ASC, "bno");
+		
+		//spring boot 2.0.0
+		Pageable paging = PageRequest.of(0, 10, Sort.Direction.ASC, "bno");
 
 		Page<Board> result = repo.findByBnoGreaterThan(0L, paging);
 		
